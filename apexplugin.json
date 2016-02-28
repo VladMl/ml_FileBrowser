@@ -25,7 +25,7 @@
       "plugin" : {
         "internalName" : "ML.VLADYSLAV.FILEBROWSER",
         "type" : "region",
-        "demo" : "",
+        "demo" : "https://raw.githubusercontent.com/VladMl/ml_FileBrowser/master/preview.png",
         "previewImage" : "https://raw.githubusercontent.com/VladMl/ml_FileBrowser/master/preview.png"
       }
     }
