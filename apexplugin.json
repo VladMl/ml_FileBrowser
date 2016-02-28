@@ -1,0 +1,33 @@
+{
+  "name" : "ml_FileBrowser",
+  "version" : "1.0.0",
+  "description" : "APEX File browser",
+  "keywords" : ["files","file browser","file download"],
+  "homepage" : "https://github.com/VladMl/ml_FileBrowser",
+  "bugs" : {
+    "url" : "https://github.com/VladMl/ml_FileBrowser/issues",
+    "email" : "vladml@outlook.com"
+  },
+  "license" : "MIT",
+  "author" : {
+    "name" : "Vlad Melnychenko",
+    "email" : "vladml@outlook.com",
+    "url" : "https://ua.linkedin.com/in/vladml"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/VladMl/ml_FileBrowser.git"
+  },
+  "oracle" : {
+    "versions" : ["11.2.0.1", "12.1.0.1"],
+    "apex" : {
+      "versions" : ["5.0.0"],
+      "plugin" : {
+        "internalName" : "ML.VLADYSLAV.FILEBROWSER",
+        "type" : "region",
+        "demo" : "",
+        "previewImage" : "https://github.com/VladMl/ml_FileBrowser/blob/master/preview.png"
+      }
+    }
+  }
+}
