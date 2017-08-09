@@ -1,9 +1,9 @@
 #Oracle APEX Region Plugin - File Browser
 
 
-##Changelog
+##Changelog<br />
 ####1.0.0 - Initial Release<br />
-####1.1.0 - Compatibility 12c and Apex 5.1.2
+####1.1.0 - Compatibility 12c and Apex 5.1.2<br />
 
 ##Install
 - Run the database script "db.sql" from source directory.
