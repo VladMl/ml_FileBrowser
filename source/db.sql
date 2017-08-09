@@ -1,5 +1,8 @@
 
-CREATE OR REPLACE AND RESOLVE JAVA SOURCE NAMED "DirectoryLister" as import java.io.File;
+CREATE GLOBAL TEMPORARY TABLE dir_list(file_name VARCHAR2(4000), is_file INTEGER) ON COMMIT DELETE ROWS;
+
+
+CREATE OR REPLACE AND RESOLVE JAVA SOURCE NAMED "DirectoryLister" AS import java.io.File;
 import java.util.Arrays;
 import java.sql.*;
 public class DirectoryLister
@@ -12,19 +15,27 @@ public class DirectoryLister
     String result = "";
     String file_name;
     int is_file;
+    Connection conn = DriverManager.getConnection("jdbc:default:connection:");
+    String sql = "INSERT INTO dir_list (file_name, is_file) VALUES (?, ?)";
+    
     for ( int i=0; i<filesInDir.length; i++ )
     {
-
      file_name = filesInDir[i].getName();
      is_file = 0;
      if (filesInDir[i].isFile())
         is_file = 1;
+     PreparedStatement pstmt = conn.prepareStatement(sql);
+     pstmt.setString(1, file_name);
+     pstmt.setLong(2, is_file);
+     
 
-     #sql { INSERT INTO dir_list (file_name, is_file) VALUES (:file_name, :is_file) };
+     pstmt.executeUpdate();
+     pstmt.close();
     }
   }
 };
 /
+
 
 CREATE OR REPLACE PROCEDURE dirlist
 (p_dir IN VARCHAR2, p_sep IN VARCHAR2)
@@ -178,10 +189,7 @@ AS
 
 
       FOR files
-         IN (  SELECT REPLACE (
-                         file_name,
-                         '.' || REGEXP_SUBSTR (file_name, '(\w+)(?:\.\w+)*$'))
-                         file_name,
+         IN (  SELECT  file_name,
                       DECODE (is_file,
                               0, '_folder',
                               REGEXP_SUBSTR (file_name, '(\w+)(?:\.\w+)*$'))
@@ -252,3 +260,6 @@ AS
    END;
 END;
 /
+
+
+grant execute on ML_FILE_BROWSER to APEX_PUBLIC_USER;
