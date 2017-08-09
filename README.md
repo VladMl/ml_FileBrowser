@@ -13,7 +13,7 @@
   exec dbms_java.grant_permission( '<OWNER>', 'SYS:java.io.FilePermission', '<<ALL FILES>>', 'read');
 - ORDS<br />
   Remove requestValidationFunction value from the file default.xml<br />
-  <entry key="security.requestValidationFunction"></entry>
+  ```xml<entry key="security.requestValidationFunction"></entry>```
 - Upload icons (for example https://github.com/teambox/Free-file-icons  48px) through Static Application Files.
 
 
