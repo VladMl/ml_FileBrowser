@@ -74,7 +74,7 @@
              htmlStart = '<ul class="t-Cards   t-Cards--featured t-Cards--5cols">';
 
              while (i--) {
-                 currItemTmpl = itemTmpl.replace(/FILE_NAME_FUNC/g, String.fromCharCode(39) + dataObj.files[i].file_name + String.fromCharCode(39));
+                 currItemTmpl = itemTmpl.replace(/FILE_NAME_FUNC/g, String.fromCharCode(39) + dataObj.files[i].file_name + String.fromCharCode(39));   
                  currItemTmpl = currItemTmpl.replace(/FILE_EXT_FUNC/g, String.fromCharCode(39) + dataObj.files[i].file_ext + String.fromCharCode(39));
                  currItemTmpl = currItemTmpl.replace(/FILE_NAME/g, dataObj.files[i].file_name);
                  currItemTmpl = currItemTmpl.replace(/FILE_EXT/g, dataObj.files[i].file_ext);
@@ -104,7 +104,7 @@
              getFiles(path[path.length - 1].dirpath);
          } else {
              var anchor = document.createElement('a');
-             anchor.setAttribute('href', schema+".ml_file_browser.get_file?p_file_name=" + path[path.length - 1].dirpath + '/' + filename + '.' + fileext);
+             anchor.setAttribute('href', schema+".ml_file_browser.get_file?p_file_name=" + path[path.length - 1].dirpath + '/' + filename);
              
              var ev = document.createEvent("MouseEvents");
              ev.initMouseEvent("click", true, false, self, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
@@ -119,6 +119,7 @@
 
      function clickBreadcrumbItem(id) {
          i = path.length;
+         if (id==i-1) return;  
          while (i--) {
              path.pop();
              if (i == id + 1)
