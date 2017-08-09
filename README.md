@@ -1,8 +1,8 @@
 #Oracle APEX Region Plugin - File Browser
 
 
-##Changelog<br />
-####1.0.0 - Initial Release
+##Changelog
+####1.0.0 - Initial Release<br />
 ####1.1.0 - Compatibility 12c and Apex 5.1.2
 
 ##Install
